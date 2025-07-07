@@ -25,7 +25,7 @@ class Trie {
             if(!node.children[symbol]){
                 node.children[symbol] = new TrieNode(symbol);
             }
-            
+
             node = node.children[symbol];
 
             if(i == word.length - 1){
@@ -37,8 +37,20 @@ class Trie {
 
     hasNode(word){
         // TODO Check is word in Trie
-        return false;
-    }
+        let node = this.root;
+        for(let i=0; i<word.length; i++){
+            const symbol = word[i];
+            if(!node.children[symbol]){
+             return false;   
+            }
+
+            node = node.children[symbol];
+
+            if(i == word.length - 1){
+                return node.isWord;
+        }
+    } 
+    }  
 
     getAllNodes(){
         // TODO returns all nodes as array
